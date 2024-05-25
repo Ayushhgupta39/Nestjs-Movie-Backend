@@ -36,7 +36,7 @@ The server will start running at `http://localhost:3000`.
 
 ## API Endpoints
 
-1.  Get all movies.
+#### 1.  Get all movies.
    
     **GET** `/movies`
 
@@ -59,7 +59,7 @@ The server will start running at `http://localhost:3000`.
     ]
     ```
 
-3.  Filter Movies by Genre
+#### 2.  Filter Movies by Genre
     **GET** `/movies/genre/:genre`
     **Parameters:** - `genre`(string): The genre to filter movies by.
 
@@ -76,7 +76,7 @@ The server will start running at `http://localhost:3000`.
     ]
     ```
 
-4.  Rate a Movie
+#### 3.  Rate a Movie
 
 **PUT** `/movies/:id/rate`
 
@@ -108,7 +108,7 @@ Response:
 }
 ```
 
-4. Get Movies Sorted by Rating
+#### 4. Get Movies Sorted by Rating
 
 **GET** `/movies/sorted-by-rating`
 
