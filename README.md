@@ -38,7 +38,7 @@ The server will start running at `http://localhost:3000`.
 
 #### 1.  Get all movies.
    
-    **GET** `/movies`
+  **GET** `/movies`
 
     Response:
 
@@ -60,7 +60,7 @@ The server will start running at `http://localhost:3000`.
     ```
 
 #### 2.  Filter Movies by Genre
-    **GET** `/movies/genre/:genre`
+  **GET** `/movies/genre/:genre`
     **Parameters:** - `genre`(string): The genre to filter movies by.
 
         Response:
