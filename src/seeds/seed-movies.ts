@@ -6,10 +6,8 @@ export const seedMovies = async (dataSource: DataSource) => {
 
   const initialMovies = Movie.initialMovies;
 
-  // Clear existing movies
   await movieRepository.clear();
 
-  // Insert initial movies
   await movieRepository.save(initialMovies);
 
   console.log('Movies seeded successfully!');

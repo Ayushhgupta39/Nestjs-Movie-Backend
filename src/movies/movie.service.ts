@@ -13,4 +13,16 @@ export class MovieService {
   async getAllMovies(): Promise<Movie[]> {
     return await this.movieRepository.getAllMovies();
   }
+
+  async getMoviesByGenre(genre: string): Promise<Movie[]> {
+    return await this.movieRepository.getMoviesByGenre(genre);
+  }
+
+  async rateMovie(id: number, rating: number): Promise<Movie> {
+    return await this.movieRepository.rateMovie(id, rating);
+  }
+
+  async getMoviesSortedByRating(): Promise<Movie[]> {
+    return await this.movieRepository.getMoviesSortedByRating();
+  }
 }

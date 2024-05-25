@@ -19,7 +19,7 @@ import { Movie } from './movies/movie.entity';
       database: 'movie_db',
       autoLoadEntities: true,
       entities: [Movie],
-      synchronize: true,
+      synchronize: false,
     }),
     TypeOrmExModule.forCustomRepository([MovieRepository]),
     TypeOrmModule.forFeature([MovieRepository]),

@@ -1,73 +1,138 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Movie API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a Nest.js backend application that serves as the foundation for a movie database. Users can interact with a wide variety of movies, rate them, and explore based on their interests.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Tech Stack
 
-## Description
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Nest.JS**: A progressive Node.js framework for building efficient, reliable, and scalable server-side applications.
+- **TypeScript**: Bringing the benefits of strong typing and modern JavaScript features to backend development.
+- **PostgreSQL**: A robust and reliable relational database management system, ensuring data integrity and performance.
+- **TypeORM**: A versatile ORM that simplifies database interactions and streamlines development with TypeScript support.
+- **Hexagonal Architecture Pattern**: Structuring the application in a modular and maintainable way, promoting separation of concerns and testability.
 
 ## Installation
 
-```bash
-$ npm install
-```
-
-## Running the app
+1. Clone the repository:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+git clone https://github.com/your-repo/movie-api.git
 ```
 
-## Test
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Set up the PostgreSQL database:
 
-```bash
-# unit tests
-$ npm run test
+   - Create a new PostgreSQL database named `movie_db`
+   - Update the database credentials in the `app.module.ts` file with your PostgreSQL username and password.
 
-# e2e tests
-$ npm run test:e2e
+4. Start the application:
+   ```bash
+   npm run start:dev
+   ```
 
-# test coverage
-$ npm run test:cov
+The server will start running at `http://localhost:3000`.
+
+## API Endpoints
+
+1.  Get all movies.
+   
+    **GET** `/movies`
+
+    Response:
+
+    ```json
+    [
+      {
+        "id": 1,
+        "title": "The Shawshank Redemption",
+        "genre": "Drama",
+        "rating": 9.3
+      },
+      {
+        "id": 2,
+        "title": "The Godfather",
+        "genre": "Crime",
+        "rating": 9.2
+      }
+    ]
+    ```
+
+3.  Filter Movies by Genre
+    **GET** `/movies/genre/:genre`
+    **Parameters:** - `genre`(string): The genre to filter movies by.
+
+        Response:
+
+    ```json
+    [
+      {
+        "id": 2,
+        "title": "The Godfather",
+        "genre": "Crime",
+        "rating": 9.2
+      }
+    ]
+    ```
+
+4.  Rate a Movie
+
+**PUT** `/movies/:id/rate`
+
+**Parameters**:
+
+- `id` (number): The ID of the movie to rate.
+
+Request Body:
+
+```json
+{
+  "rating": 4.5
+}
 ```
 
-## Support
+Response:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```json
+{
+  "id": 1,
 
-## Stay in touch
+  "title": "The Shawshank Redemption",
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+  "genre": "Drama",
 
-## License
+  "rating": 9.3,
 
-Nest is [MIT licensed](LICENSE).
+  "userRating": 4.5
+}
+```
+
+4. Get Movies Sorted by Rating
+
+**GET** `/movies/sorted-by-rating`
+
+Response:
+
+```json
+[
+  {
+    "id": 1,
+
+    "title": "The Shawshank Redemption",
+
+    "genre": "Drama",
+
+    "rating": 9.3
+  },
+
+  {
+    "id": 2,
+
+    "title": "The Godfather",
+
+    "genre": "Crime",
+
+    "rating": 9.2
+  }
+]
