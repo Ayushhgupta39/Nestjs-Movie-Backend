@@ -13,4 +13,10 @@ export class Movie {
 
   @Column({ default: 0 })
   rating: number;
+
+  static initialMovies: Movie[] = [
+    { id: 1, title: 'The Shawshank Redemption', genre: 'Drama', rating: 9 },
+    { id: 2, title: 'The Godfather', genre: 'Crime', rating: 8 },
+    { id: 3, title: 'The Dark Knight', genre: 'Action', rating: 9 },
+  ];
 }
