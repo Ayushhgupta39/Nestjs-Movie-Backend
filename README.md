@@ -15,7 +15,7 @@ This is a Nest.js backend application that serves as the foundation for a movie 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-repo/movie-api.git
+git clone https://github.com/Ayushhgupta39/buidlerstribe-assignment.git
 ```
 
 2. Install dependencies:
@@ -71,9 +71,10 @@ Alternatively, If you have PostgreSQL installed locally, you can start the serve
    
   **GET** `/movies`
 
-    Response:
+  Response:
 
-    ```json
+
+  ```json
     [
       {
         "id": 1,
@@ -88,15 +89,17 @@ Alternatively, If you have PostgreSQL installed locally, you can start the serve
         "rating": 9.2
       }
     ]
-    ```
+  ```
 
 #### 2.  Filter Movies by Genre
+
   **GET** `/movies/genre/:genre`
-    **Parameters:** - `genre`(string): The genre to filter movies by.
+  
+  **Parameters:** `genre`(string): The genre to filter movies by.
 
-        Response:
+  Response:
 
-    ```json
+  ```json
     [
       {
         "id": 2,
@@ -105,7 +108,7 @@ Alternatively, If you have PostgreSQL installed locally, you can start the serve
         "rating": 9.2
       }
     ]
-    ```
+  ```
 
 #### 3.  Rate a Movie
 
