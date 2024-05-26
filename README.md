@@ -34,6 +34,37 @@ git clone https://github.com/your-repo/movie-api.git
 
 The server will start running at `http://localhost:3000`.
 
+## Start PostgresSQL Server
+
+### Using Docker
+
+You can run PostgreSQL using Docker:
+
+  1. Install Docker on your machine if you haven't already.
+  2. Pull the official PostgresSQL Docker image:
+   ```bash
+   docker pull postgres
+   ```
+  3. Run a new PostgresSQL container:
+   ```bash
+   docker run --name psql -p 5432:5432 -e POSTGRES_USER=<username> -e POSTGRES_PASSWORD=<password> -e POSTGRES_DB=movie_db -d postgres
+   ```
+
+### Locally
+
+Alternatively, If you have PostgreSQL installed locally, you can start the server by following these steps:
+
+  - On macOS, you can start the PostgreSQL server using the following command:
+    ```bash
+    brew services start postgresql
+    ```
+  - On Linux, you can start the PostgreSQL server using the following command:
+    ```bash
+    sudo systemctl start postgresql
+    ```
+
+  - On Windows, you can start the PostgreSQL server from the Start menu or by running the `pg_ctl` command.
+
 ## API Endpoints
 
 #### 1.  Get all movies.
