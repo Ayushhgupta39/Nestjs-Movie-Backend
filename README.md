@@ -144,6 +144,8 @@ Response:
 
 #### 4. Get Movies Sorted by Rating
 
+Returns all the movies sorted by rating, having the most popular movies in Top and the one with least ratings at bottom.
+
 **GET** `/movies/sorted-by-rating`
 
 Response:
